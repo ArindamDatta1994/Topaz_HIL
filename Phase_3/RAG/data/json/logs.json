@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-04-10T10:00:00",
+    "level": "ERROR",
+    "message": "Database connection failed",
+    "service": "auth-service"
+  },
+  {
+    "timestamp": "2026-04-10T10:05:00",
+    "level": "INFO",
+    "message": "Retry successful",
+    "service": "auth-service"
+  }
+]
