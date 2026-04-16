@@ -9,6 +9,8 @@ from processing.embeddings import generate_embeddings
 from vectorstore.faiss_store import FAISSStore
 from retrieval.retriever import retrieve
 
+from qa.qa_system import answer_query
+
 # Step 1: Load documents
 def load_all(data_path):
     texts = []
@@ -45,10 +47,14 @@ def query_system(store):
     while True:
         query = input("\nEnter your query: ")
         results = retrieve(query, store)
+        answer = answer_query(query, results)
 
-        print("\nTop Results:")
-        for r in results:
-            print("-", r[:200])
+        print("\nAnswer:")
+        print(answer)
+
+        # print("\nTop Results:")
+        # for r in results:
+        #     print("-", r[:200])
 
 # Run
 if __name__ == "__main__":

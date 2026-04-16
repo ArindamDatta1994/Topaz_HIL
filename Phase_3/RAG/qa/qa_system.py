@@ -1,12 +1,21 @@
+from qa.llm_client import generate_response
+
 def answer_query(query, retrieved_chunks):
-    context = " ".join(retrieved_chunks)
+    context = "\n".join(retrieved_chunks)
 
     prompt = f"""
-    Answer the question based on context:
+You are a question-answering system.
 
-    Context: {context}
-    Question: {query}
-    """
+Use ONLY the context below to answer the question.
+If the answer is not in the context, say "I don't know."
 
-    # Replace with your LLM (Groq/OpenAI)
-    return prompt
+Context:
+{context}
+
+Question:
+{query}
+
+Answer:
+"""
+
+    return generate_response(prompt)
